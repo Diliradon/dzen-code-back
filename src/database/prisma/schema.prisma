@@ -7,6 +7,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  email    String  @unique
+  password String
+  name     String?
+
+  @@map("users")
+}
+
 model Message {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   createdAt DateTime @default(now()) @map("created_at")
