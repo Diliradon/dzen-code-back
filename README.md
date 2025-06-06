@@ -1,12 +1,5 @@
-<div align="center">
- <img width="524" src="https://github.com/user-attachments/assets/d460817f-058a-4d3f-b75c-b897c954ecdc" />
-</div>
-
-# [Lumitech](https://lumitech.co/) Node.js Fastify Template 
-Welcome to the Lumitech Node.js Fastify Template. This template provides a well-organized starting point for building back-end applications in Node.js, featuring Swagger-based API documentation, ready-to-use Docker configuration, and Awilix for dependency injection. With well-defined architectural patterns, it helps ensure the code remains maintainable, scalable, and testable, especially as the application grows.
-
-### About Lumitech
-[Lumitech](https://lumitech.co/) is a custom software development company providing professional services worldwide. We partner with technology businesses globally helping them to build successful engineering teams and create innovative software products. We’re a global team of software engineers, AI and ML specialists, product managers, and technology experts who have achieved a 600% growth rate since 2022. When a rocket launches toward the moon, it doesn’t stop halfway. Neither do we.
+# Node.js Fastify Template 
+Welcome to the Node.js Fastify Template. This template provides a well-organized starting point for building back-end applications in Node.js, featuring Swagger-based API documentation, ready-to-use Docker configuration, and Awilix for dependency injection. With well-defined architectural patterns, it helps ensure the code remains maintainable, scalable, and testable, especially as the application grows.
 
 ## 🛠️ Technology Stack:
 - [TypeScript](https://www.typescriptlang.org/) - programming language;
