@@ -17,6 +17,7 @@ export type Cradle = {
             payload: { userId: string; email: string },
             options?: { expiresIn: string }
         ) => string;
+        verify: (token: string) => { userId: string; email: string };
     };
 
     messageRepository: MessageRepository;

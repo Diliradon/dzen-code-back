@@ -8,6 +8,8 @@ import {
     RegisterUserResponse,
     LoginUserInput,
     LoginUserResponse,
+    GetCurrentUserResponse,
+    GetUserByIdResponse,
 } from "@/lib/validation/user/user.schema.js";
 
 interface JWTService {
@@ -15,6 +17,7 @@ interface JWTService {
         payload: { userId: string; email: string },
         options?: { expiresIn: string }
     ) => string;
+    verify: (token: string) => { userId: string; email: string };
 }
 
 export type UserService = {
@@ -22,6 +25,8 @@ export type UserService = {
         payload: RegisterUserInput;
     }) => Promise<RegisterUserResponse>;
     loginUser: (p: { payload: LoginUserInput }) => Promise<LoginUserResponse>;
+    getCurrentUser: (p: { userId: string }) => Promise<GetCurrentUserResponse>;
+    getUserById: (p: { userId: string }) => Promise<GetUserByIdResponse>;
 };
 
 export const createService = (
@@ -112,6 +117,50 @@ export const createService = (
             data: {
                 user: userWithoutPassword,
                 token,
+            },
+        };
+    },
+
+    getCurrentUser: async ({ userId }) => {
+        const user = await userRepository.findUniqueOrFail({
+            where: { id: userId },
+            select: {
+                id: true,
+                email: true,
+                name: true,
+                createdAt: true,
+                updatedAt: true,
+            },
+        });
+
+        log.info("User retrieved successfully: %s", user.email);
+
+        return {
+            message: "User retrieved successfully.",
+            data: {
+                user,
+            },
+        };
+    },
+
+    getUserById: async ({ userId }) => {
+        const user = await userRepository.findUniqueOrFail({
+            where: { id: userId },
+            select: {
+                id: true,
+                email: true,
+                name: true,
+                createdAt: true,
+                updatedAt: true,
+            },
+        });
+
+        log.info("User retrieved by ID: %s", user.email);
+
+        return {
+            message: "User retrieved successfully.",
+            data: {
+                user,
             },
         };
     },

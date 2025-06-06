@@ -50,11 +50,31 @@ const loginUserResponseSchema = z.object({
 
 type LoginUserResponse = z.infer<typeof loginUserResponseSchema>;
 
+const getCurrentUserResponseSchema = z.object({
+    message: z.string(),
+    data: z.object({
+        user: defaultUserSchema,
+    }),
+});
+
+type GetCurrentUserResponse = z.infer<typeof getCurrentUserResponseSchema>;
+
+const getUserByIdResponseSchema = z.object({
+    message: z.string(),
+    data: z.object({
+        user: defaultUserSchema,
+    }),
+});
+
+type GetUserByIdResponse = z.infer<typeof getUserByIdResponseSchema>;
+
 export {
     registerUserBodySchema,
     registerUserResponseSchema,
     loginUserBodySchema,
     loginUserResponseSchema,
+    getCurrentUserResponseSchema,
+    getUserByIdResponseSchema,
 };
 
 export type {
@@ -62,4 +82,6 @@ export type {
     RegisterUserResponse,
     LoginUserInput,
     LoginUserResponse,
+    GetCurrentUserResponse,
+    GetUserByIdResponse,
 };
