@@ -7,6 +7,8 @@ import {
     loginUserResponseSchema,
     getCurrentUserResponseSchema,
     getUserByIdResponseSchema,
+    authHeadersSchema,
+    userParamsSchema,
 } from "@/lib/validation/user/user.schema.js";
 
 export const createUserRoutes = (
@@ -63,16 +65,7 @@ export const createUserRoutes = (
             schema: {
                 tags: ["user"],
                 summary: "Get current user profile",
-                headers: {
-                    type: "object",
-                    properties: {
-                        authorization: {
-                            type: "string",
-                            description: "Bearer token",
-                        },
-                    },
-                    required: ["authorization"],
-                },
+                headers: authHeadersSchema,
                 response: {
                     200: getCurrentUserResponseSchema,
                     401: {
@@ -94,26 +87,8 @@ export const createUserRoutes = (
             schema: {
                 tags: ["user"],
                 summary: "Get user by ID",
-                headers: {
-                    type: "object",
-                    properties: {
-                        authorization: {
-                            type: "string",
-                            description: "Bearer token",
-                        },
-                    },
-                    required: ["authorization"],
-                },
-                params: {
-                    type: "object",
-                    properties: {
-                        userId: {
-                            type: "string",
-                            description: "User ID",
-                        },
-                    },
-                    required: ["userId"],
-                },
+                headers: authHeadersSchema,
+                params: userParamsSchema,
                 response: {
                     200: getUserByIdResponseSchema,
                     401: {

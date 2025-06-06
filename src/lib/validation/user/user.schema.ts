@@ -68,6 +68,14 @@ const getUserByIdResponseSchema = z.object({
 
 type GetUserByIdResponse = z.infer<typeof getUserByIdResponseSchema>;
 
+const authHeadersSchema = z.object({
+    authorization: z.string().describe("Bearer token"),
+});
+
+const userParamsSchema = z.object({
+    userId: z.string().describe("User ID"),
+});
+
 export {
     registerUserBodySchema,
     registerUserResponseSchema,
@@ -75,6 +83,8 @@ export {
     loginUserResponseSchema,
     getCurrentUserResponseSchema,
     getUserByIdResponseSchema,
+    authHeadersSchema,
+    userParamsSchema,
 };
 
 export type {
